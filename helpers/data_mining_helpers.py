@@ -26,7 +26,7 @@ def check_missing_values(row):
             counter+=1
     return ("The amoung of missing records is: ", counter)
 
-def tokenize_text(text, remove_stopwords=False):
+def tokenize_text(text, remove_stopwords=True):
     """
     Tokenize text using the nltk library
     """
@@ -35,4 +35,17 @@ def tokenize_text(text, remove_stopwords=False):
         for word in nltk.word_tokenize(d, language='english'):
             # filters here
             tokens.append(word)
+    return tokens
+
+def tokenize_text_new(text, remove_stopwords=True):
+    """
+    Tokenize text using the nltk library
+    """
+    tokens = []
+    for d in nltk.sent_tokenize(text, language='english'):
+        for word in nltk.word_tokenize(d, language='english'):
+            # filters here
+            if word.isalpha():
+                tokens.lower()
+                tokens.append(word)
     return tokens
